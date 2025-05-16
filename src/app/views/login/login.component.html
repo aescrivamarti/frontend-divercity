@@ -1,1 +1,23 @@
-<p>login works!</p>
+<div class="container mt-5">
+  <h2>Iniciar Sesión</h2>
+
+  <form (ngSubmit)="login()" #formLogin="ngForm">
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="email" class="form-control" [(ngModel)]="email" name="email" required />
+    </div>
+
+    <div class="mb-3">
+      <label>Contraseña</label>
+      <input type="password" class="form-control" [(ngModel)]="password" name="password" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Iniciar Sesión</button>
+  </form>
+
+  @if (mensaje) {
+    <div class="alert alert-info mt-3">
+      {{ mensaje }}
+    </div>
+  }
+</div>
