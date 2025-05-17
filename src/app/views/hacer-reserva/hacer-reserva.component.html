@@ -1,1 +1,26 @@
-<p>hacer-reserva works!</p>
+<div class="container mt-5">
+  <h2>Hacer una Reserva</h2>
+
+  <form (ngSubmit)="hacerReserva()" #formReserva="ngForm">
+    <div class="mb-3">
+      <label>Fecha</label>
+      <input type="date" class="form-control" [(ngModel)]="reserva.fecha" name="fecha" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Hora</label>
+      <input type="time" class="form-control" [(ngModel)]="reserva.hora" name="hora" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Número de personas</label>
+      <input type="number" class="form-control" [(ngModel)]="reserva.numPersonas" name="numPersonas" required min="1">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Reservar</button>
+  </form>
+
+  @if (mensaje) {
+    <div class="alert alert-info mt-3">{{ mensaje }}</div>
+  }
+</div>

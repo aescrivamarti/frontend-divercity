@@ -18,4 +18,14 @@ export class AuthService {
   login(email: string, password: string): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/login`, { email, password });
   }
+
+  getUsuario(): User | null {
+    const userStr = localStorage.getItem('usuario');
+    return userStr ? JSON.parse(userStr) : null;
+  }
+
+  cerrarSesion(): void {
+    localStorage.removeItem('usuario');
+  }
+
 }

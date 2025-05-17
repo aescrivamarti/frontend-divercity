@@ -1,1 +1,35 @@
-<p>gestionar-reservas works!</p>
+<div class="container mt-5">
+  <h2>Gestionar Reservas</h2>
+
+  <table class="table table-bordered mt-3" *ngIf="reservas.length > 0; else sinReservas">
+    <thead>
+    <tr>
+      <th>Email</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Nº Personas</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let reserva of reservas">
+      <td>{{ reserva.email }}</td>
+      <td><input type="date" [(ngModel)]="reserva.fecha" class="form-control" /></td>
+      <td><input type="time" [(ngModel)]="reserva.hora" class="form-control" /></td>
+      <td><input type="number" [(ngModel)]="reserva.numPersonas" class="form-control" min="1" /></td>
+      <td>
+        <button class="btn btn-sm btn-primary me-2" (click)="actualizarReserva(reserva)">Actualizar</button>
+        <button *ngIf="esAdmin" class="btn btn-sm btn-danger" (click)="eliminarReserva(reserva.id)">Eliminar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-template #sinReservas>
+    <p>No hay reservas disponibles.</p>
+  </ng-template>
+
+  <div *ngIf="mensaje" class="alert alert-info mt-3">
+    {{ mensaje }}
+  </div>
+</div>
