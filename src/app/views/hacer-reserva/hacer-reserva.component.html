@@ -1,26 +1,63 @@
 <div class="container mt-5">
   <h2>Hacer una Reserva</h2>
 
-  <form (ngSubmit)="hacerReserva()" #formReserva="ngForm">
+  <form (ngSubmit)="hacerReserva()" #formReserva="ngForm" novalidate>
+
+    <!-- Fecha -->
     <div class="mb-3">
       <label>Fecha</label>
-      <input type="date" class="form-control" [(ngModel)]="reserva.fecha" name="fecha" required>
+      <input
+        type="date"
+        class="form-control"
+        name="fecha"
+        [(ngModel)]="reserva.fecha"
+        required
+        #fecha="ngModel"
+      />
+      <div class="text-danger" *ngIf="fecha.invalid && fecha.touched">
+        La fecha es obligatoria.
+      </div>
     </div>
 
+    <!-- Hora -->
     <div class="mb-3">
       <label>Hora</label>
-      <input type="time" class="form-control" [(ngModel)]="reserva.hora" name="hora" required>
+      <input
+        type="time"
+        class="form-control"
+        name="hora"
+        [(ngModel)]="reserva.hora"
+        required
+        #hora="ngModel"
+      />
+      <div class="text-danger" *ngIf="hora.invalid && hora.touched">
+        La hora es obligatoria.
+      </div>
     </div>
 
+    <!-- Nº Personas -->
     <div class="mb-3">
       <label>Número de personas</label>
-      <input type="number" class="form-control" [(ngModel)]="reserva.numPersonas" name="numPersonas" required min="1">
+      <input
+        type="number"
+        class="form-control"
+        name="numPersonas"
+        [(ngModel)]="reserva.numPersonas"
+        required
+        min="1"
+        #numPersonas="ngModel"
+      />
+      <div class="text-danger" *ngIf="numPersonas.invalid && numPersonas.touched">
+        Debe haber al menos 1 persona.
+      </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Reservar</button>
+    <button type="submit" class="btn btn-primary" [disabled]="formReserva.invalid">
+      Reservar
+    </button>
   </form>
 
-  @if (mensaje) {
-    <div class="alert alert-info mt-3">{{ mensaje }}</div>
-  }
+  <div class="alert alert-info mt-3" *ngIf="mensaje">
+    {{ mensaje }}
+  </div>
 </div>
