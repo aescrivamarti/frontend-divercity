@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component , OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -9,13 +10,23 @@ import { RouterModule } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
-  usuario = this.authService.getUsuario();
+export class HomeComponent implements OnInit{
+  usuario: any;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.usuario = this.authService.getUsuario();
+  }
+
+  ngOnInit() {
+    this.usuario = this.authService.getUsuario();
+  }
 
   cerrarSesion() {
     this.authService.cerrarSesion();
-    window.location.reload();
+    this.usuario = this.authService.getUsuario(); // ← se vuelve a cargar (será null)
+    this.router.navigate(['/']);
   }
 }

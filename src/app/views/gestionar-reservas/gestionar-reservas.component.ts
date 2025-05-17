@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ReservaService } from '../../services/reserva.service';
 import { Reserva } from '../../models/reserva.model';
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-gestionar-reservas',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './gestionar-reservas.component.html',
   styleUrl: './gestionar-reservas.component.css'
 })
