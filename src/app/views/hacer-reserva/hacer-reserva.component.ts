@@ -5,11 +5,12 @@ import { Reserva } from '../../models/reserva.model';
 import { AuthService } from '../../services/auth.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import {FooterComponent} from "../../shared/footer/footer.component";
 
 @Component({
   selector: 'app-hacer-reserva',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, FooterComponent],
   templateUrl: './hacer-reserva.component.html',
   styleUrl: './hacer-reserva.component.css'
 })

@@ -1,7 +1,7 @@
-<div class="container mt-5">
-  <h2>Gestionar Reservas</h2>
+<div class="gestionar-reservas py-5 px-5">
+  <h2 class="text-center text-white mb-5">Gestionar Reservas</h2>
 
-  <table class="table table-bordered mt-3" *ngIf="reservas.length > 0; else sinReservas">
+  <table class="table table-bordered table-striped bg-white text-dark mt-3 w-100" *ngIf="reservas.length > 0; else sinReservas">
     <thead>
     <tr>
       <th>Email</th>
@@ -26,14 +26,16 @@
   </table>
 
   <ng-template #sinReservas>
-    <p>No hay reservas disponibles.</p>
+    <p class="text-white text-center mt-3">No hay reservas disponibles.</p>
   </ng-template>
 
-  <div *ngIf="mensaje" class="alert alert-info mt-3">
+  <div *ngIf="mensaje" class="alert alert-info mt-3 w-100 text-center">
     {{ mensaje }}
   </div>
-</div>
 
-<div class="mt-4 text-center">
-  <a routerLink="/" class="btn btn-secondary">Volver al inicio</a>
+  <div class="mt-4 text-center">
+    <a routerLink="/" class="btn btn-light">Volver al inicio</a>
+  </div>
+
+  <app-footer />
 </div>

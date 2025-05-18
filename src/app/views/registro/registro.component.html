@@ -1,14 +1,13 @@
-<div class="container mt-5">
-  <h2>Registrarse</h2>
+<div class="registro-container py-5 px-5">
+  <h2 class="text-center text-white mb-4">Registrarse</h2>
 
-  <form (ngSubmit)="registrar()" #formRegistro="ngForm" novalidate>
-
+  <form (ngSubmit)="registrar()" #formRegistro="ngForm" novalidate class="mx-auto" style="max-width: 500px;">
     <!-- Nombre -->
     <div class="mb-3">
-      <label>Nombre</label>
+      <label class="form-label text-white">Nombre</label>
       <input
         type="text"
-        class="form-control"
+        class="form-control text-center"
         name="nombre"
         [(ngModel)]="usuario.nombre"
         required
@@ -22,10 +21,10 @@
 
     <!-- Email -->
     <div class="mb-3">
-      <label>Email</label>
+      <label class="form-label text-white">Email</label>
       <input
         type="email"
-        class="form-control"
+        class="form-control text-center"
         name="email"
         [(ngModel)]="usuario.email"
         required
@@ -39,10 +38,10 @@
 
     <!-- Teléfono -->
     <div class="mb-3">
-      <label>Teléfono</label>
+      <label class="form-label text-white">Teléfono</label>
       <input
         type="tel"
-        class="form-control"
+        class="form-control text-center"
         name="telefono"
         [(ngModel)]="usuario.telefono"
         required
@@ -56,10 +55,10 @@
 
     <!-- Contraseña -->
     <div class="mb-3">
-      <label>Contraseña</label>
+      <label class="form-label text-white">Contraseña</label>
       <input
         type="password"
-        class="form-control"
+        class="form-control text-center"
         name="password"
         [(ngModel)]="usuario.password"
         required
@@ -71,17 +70,20 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="formRegistro.invalid">
-      Registrarse
-    </button>
-
+    <div class="text-center">
+      <button type="submit" class="btn btn-light px-4" [disabled]="formRegistro.invalid">
+        Registrarse
+      </button>
+    </div>
   </form>
 
-  <div class="alert alert-info mt-3" *ngIf="mensaje">
+  <div class="alert alert-info mt-4 text-center mx-auto" *ngIf="mensaje" style="max-width: 500px;">
     {{ mensaje }}
   </div>
-</div>
 
-<div class="mt-4 text-center">
-  <a routerLink="/" class="btn btn-secondary">Volver al inicio</a>
+  <div class="mt-4 text-center">
+    <a routerLink="/" class="btn btn-outline-light">Volver al inicio</a>
+  </div>
+
+  <app-footer />
 </div>

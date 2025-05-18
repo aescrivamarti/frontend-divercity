@@ -4,11 +4,12 @@ import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
 import { CommonModule } from '@angular/common';
 import {RouterLink} from "@angular/router";
+import {FooterComponent} from "../../shared/footer/footer.component";
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, FooterComponent],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })

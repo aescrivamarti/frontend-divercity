@@ -1,0 +1,7 @@
+.registro-container {
+  background: linear-gradient(to bottom right, #005599, #00aaff);
+  min-height: 100vh;
+  padding: 40px 20px;
+  border-radius: 20px;
+  color: white;
+}
