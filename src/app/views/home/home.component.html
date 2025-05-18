@@ -27,6 +27,7 @@
     <ng-container *ngIf="usuario?.rol === 'ADMIN'">
       <a routerLink="/hacer-reserva" class="menu-button">Hacer una reserva</a>
       <a routerLink="/gestionar-reservas" class="menu-button">Gestionar reserva</a>
+      <a routerLink="/gestionar-usuarios" class="menu-button">Gestionar usuarios</a> <!-- ✅ NUEVO -->
     </ng-container>
 
     <!-- Botón cerrar sesión -->
@@ -34,5 +35,6 @@
       <button class="menu-button logout" (click)="cerrarSesion()">Cerrar sesión</button>
     </ng-container>
   </nav>
+
   <app-footer />
 </div>

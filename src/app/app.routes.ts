@@ -7,6 +7,7 @@ import { LoginComponent } from './views/login/login.component';
 import { RegistroComponent } from './views/registro/registro.component';
 import { HacerReservaComponent } from './views/hacer-reserva/hacer-reserva.component';
 import { GestionarReservasComponent } from './views/gestionar-reservas/gestionar-reservas.component';
+import {GestionarUsuariosComponent} from "./views/gestionar-usuarios/gestionar-usuarios.component";
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,5 +16,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'hacer-reserva', component: HacerReservaComponent },
-  { path: 'gestionar-reservas', component: GestionarReservasComponent }
+  { path: 'gestionar-reservas', component: GestionarReservasComponent },
+  {path: 'gestionar-usuarios', component: GestionarUsuariosComponent}
 ];

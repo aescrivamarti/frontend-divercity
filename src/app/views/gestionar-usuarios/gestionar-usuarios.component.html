@@ -1,0 +1,46 @@
+<div class="gestionar-usuarios py-5 px-5">
+  <h2 class="text-center text-white mb-5">Gestionar Usuarios</h2>
+
+  <table class="table table-bordered table-striped bg-white text-dark mt-3 w-100" *ngIf="usuarios.length > 0; else sinUsuarios">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Teléfono</th>
+      <th>Rol</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let usuario of usuarios">
+      <td><input type="text" [(ngModel)]="usuario.nombre" class="form-control" /></td>
+      <td><input type="email" [(ngModel)]="usuario.email" class="form-control" /></td>
+      <td><input type="text" [(ngModel)]="usuario.telefono" class="form-control" /></td>
+      <td>
+        <select [(ngModel)]="usuario.rol" class="form-select">
+          <option value="USER">USER</option>
+          <option value="ADMIN">ADMIN</option>
+        </select>
+      </td>
+      <td>
+        <button class="btn btn-sm btn-primary me-2" (click)="actualizarUsuario(usuario)">Actualizar</button>
+        <button class="btn btn-sm btn-danger" (click)="eliminarUsuario(usuario.id)">Eliminar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-template #sinUsuarios>
+    <p class="text-white text-center mt-3">No hay usuarios disponibles.</p>
+  </ng-template>
+
+  <div *ngIf="mensaje" class="alert alert-info mt-3 w-100 text-center">
+    {{ mensaje }}
+  </div>
+
+  <div class="mt-4 text-center">
+    <a routerLink="/" class="btn btn-light">Volver al inicio</a>
+  </div>
+
+  <app-footer />
+</div>

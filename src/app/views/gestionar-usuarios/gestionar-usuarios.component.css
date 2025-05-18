@@ -1,0 +1,7 @@
+.gestionar-usuarios {
+  background: linear-gradient(to bottom right, #005599, #00aaff);
+  min-height: 100vh;
+  border-radius: 20px;
+  padding: 40px 20px;
+  color: white;
+}
