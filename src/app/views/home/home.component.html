@@ -1,25 +1,38 @@
-<div class="container text-center mt-5">
-  <h1 class="mb-4">Bienvenido a DiverCity</h1>
+<div class="home-container">
+  <img src="assets/LOGO_PNG.png" alt="Logo Divercity" class="logo" />
 
-  <!-- Vista para no logueados -->
-  <div class="d-grid gap-3 col-6 mx-auto" *ngIf="!usuario">
-    <a class="btn btn-primary" routerLink="/atracciones">Atracciones</a>
-    <a class="btn btn-secondary" routerLink="/sobre-nosotros">Sobre Nosotros</a>
-    <a class="btn btn-success" routerLink="/login">Iniciar Sesión</a>
-    <a class="btn btn-warning" routerLink="/registro">Registrarse</a>
-  </div>
+  <h1>
+    👋 Hola, {{ usuario?.nombre || 'Invitado' }}
+    <span *ngIf="usuario?.rol === 'ADMIN'">(Admin)</span>
+  </h1>
 
-  <!-- Vista para logueados -->
-  <div class="d-grid gap-3 col-6 mx-auto" *ngIf="usuario">
-    <div class="text-center mb-3" *ngIf="usuario">
-      <h5>👋 Hola, {{ usuario.nombre }}</h5>
-      <span *ngIf="usuario.rol === 'ADMIN'">(Admin)</span>
-    </div>
+  <nav class="menu">
+    <!-- Siempre visible -->
+    <a routerLink="/atracciones" class="menu-button">Ver atracciones</a>
+    <a routerLink="/sobre-nosotros" class="menu-button">Sobre Nosotros</a>
 
-    <a class="btn btn-primary" routerLink="/atracciones">Atracciones</a>
-    <a class="btn btn-secondary" routerLink="/sobre-nosotros">Sobre Nosotros</a>
-    <a class="btn btn-info" routerLink="/hacer-reserva">Hacer Reserva</a>
-    <a class="btn btn-dark" routerLink="/gestionar-reservas">Gestionar Reservas</a>
-    <button class="btn btn-danger" (click)="cerrarSesion()">Cerrar sesión</button>
-  </div>
+    <!-- No logueado -->
+    <ng-container *ngIf="!usuario">
+      <a routerLink="/login" class="menu-button">Iniciar sesión</a>
+      <a routerLink="/registro" class="menu-button">Registrarse</a>
+    </ng-container>
+
+    <!-- Logueado como USER -->
+    <ng-container *ngIf="usuario?.rol === 'USER'">
+      <a routerLink="/hacer-reserva" class="menu-button">Hacer una reserva</a>
+      <a routerLink="/gestionar-reservas" class="menu-button">Gestionar reserva</a>
+    </ng-container>
+
+    <!-- Logueado como ADMIN -->
+    <ng-container *ngIf="usuario?.rol === 'ADMIN'">
+      <a routerLink="/hacer-reserva" class="menu-button">Hacer una reserva</a>
+      <a routerLink="/gestionar-reservas" class="menu-button">Gestionar reserva</a>
+    </ng-container>
+
+    <!-- Botón cerrar sesión -->
+    <ng-container *ngIf="usuario">
+      <button class="menu-button logout" (click)="cerrarSesion()">Cerrar sesión</button>
+    </ng-container>
+  </nav>
+  <app-footer />
 </div>

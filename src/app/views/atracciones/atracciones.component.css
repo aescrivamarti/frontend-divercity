@@ -1,0 +1,32 @@
+.atracciones-container {
+  background: linear-gradient(to bottom right, #005599, #00aaff);
+  border-radius: 20px;
+  min-height: 100vh;
+}
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+
+.carousel img {
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.btn.active {
+  background-color: #003366 !important;
+  border-color: #003366 !important;
+}
